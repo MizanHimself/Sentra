@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -21,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+      body: Column(
         children: <Widget>[
           // Left side
           Expanded(
@@ -68,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                       ElevatedButton(
                         onPressed: _login,
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.pink,
+                          iconColor: Colors.pink,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -82,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.grey[300],
+                          iconColor: Colors.grey[300],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -104,17 +103,17 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.facebook),
+                        icon: const Icon(Icons.facebook),
                         onPressed: () {},
                       ),
                       const SizedBox(width: 10),
                       IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.twitter),
+                        icon: const Icon(Icons.camera_alt),
                         onPressed: () {},
                       ),
                       const SizedBox(width: 10),
                       IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.instagram),
+                        icon: const Icon(Icons.camera_alt),
                         onPressed: () {},
                       ),
                     ],
