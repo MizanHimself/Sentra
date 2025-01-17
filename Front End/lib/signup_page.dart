@@ -133,8 +133,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     ElevatedButton(
                       onPressed: _signUp, // Bind the sign up function to the button
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue, // Set button background color
-                        onPrimary: Colors.white, // Set button text color
+                        backgroundBuilder: Colors.blue, // Set button background color
+                        foregroundColor: Colors.white, // Set button text color
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10), // Set button border radius
                         ),
