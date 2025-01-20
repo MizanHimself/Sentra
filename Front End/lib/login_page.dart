@@ -142,16 +142,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width / 2, // Set container width to half of the screen
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.blue, Colors.white], // Set gradient colors
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+          if (MediaQuery.of(context).size.width > 600) // Show image only for larger screens
+            Container(
+              width: MediaQuery.of(context).size.width / 2, // Set container width to half of the screen
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.blue, Colors.white], // Set gradient colors
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

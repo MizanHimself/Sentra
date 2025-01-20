@@ -133,8 +133,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     ElevatedButton(
                       onPressed: _signUp, // Bind the sign up function to the button
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue, // Set button background color
-                        onPrimary: Colors.white, // Set button text color
+                        backgroundColor: Colors.blue, // Set button background color
+                        foregroundColor: Colors.white, // Set button text color
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10), // Set button border radius
                         ),
@@ -167,16 +167,17 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width / 2, // Set container width to half of the screen
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.blue, Colors.white], // Set gradient colors
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+          if (MediaQuery.of(context).size.width > 600) // Show image only for larger screens
+            Container(
+              width: MediaQuery.of(context).size.width / 2, // Set container width to half of the screen
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.blue, Colors.white], // Set gradient colors
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
