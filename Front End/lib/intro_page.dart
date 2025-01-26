@@ -11,13 +11,12 @@ class IntroPage extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFFFFFFFF),
-              Color(0xFF2600FA),
-              Color(0xFF77CBDB)
+              Color(0xFFFFFFFF), // White color
+              Color(0xFF2600FA), // Blue color
             ], // Set gradient colors
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            stops: [0.0, 0.5, 1.0], // Adjust gradient stops
+            stops: [0.0, 1.0], // Adjust gradient stops
           ),
         ),
         child: Stack(
@@ -31,7 +30,14 @@ class IntroPage extends StatelessWidget {
                     CrossAxisAlignment.center, // Center the column horizontally
                 children: <Widget>[
                   const Spacer(flex: 1), // Adjust spacer to push content up
-                  const Spacer(flex: 2), // Adjust spacer to push content up
+                  Image.asset(
+                    'assets/images/guypushup-intropage.png', // Path to the image
+                    width: MediaQuery.of(context)
+                        .size
+                        .width, // Set image width to screen width
+                    fit: BoxFit.cover, // Cover the entire width
+                  ),
+                  const Spacer(flex: 1), // Adjust spacer to push content up
                 ],
               ),
             ),
@@ -40,12 +46,14 @@ class IntroPage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.symmetric(horizontal: 0.0),
-                padding: const EdgeInsets.all(110.0), // Increase padding to increase height
+                padding: const EdgeInsets.all(
+                    40.0), // Reduce padding to change tab height
                 decoration: BoxDecoration(
                   color: Colors.white, // Ensure tab color is white
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30), // Set top left corner radius
-                    topRight: Radius.circular(30), // Set top right corner radius
+                    topRight:
+                        Radius.circular(30), // Set top right corner radius
                   ),
                 ),
                 child: Column(
@@ -54,7 +62,7 @@ class IntroPage extends StatelessWidget {
                     const Text(
                       'Welcome to Our App!',
                       style: TextStyle(
-                        fontSize: 32,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
                       ),
