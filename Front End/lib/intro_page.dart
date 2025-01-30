@@ -47,7 +47,7 @@ class IntroPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.symmetric(horizontal: 0.0),
                 padding: const EdgeInsets.all(
-                    40.0), // Reduce padding to change tab height
+                    60.0), // Increase padding to increase height
                 decoration: BoxDecoration(
                   color: Colors.white, // Ensure tab color is white
                   borderRadius: const BorderRadius.only(
@@ -62,7 +62,7 @@ class IntroPage extends StatelessWidget {
                     const Text(
                       'Welcome to Our App!',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 32,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
                       ),
