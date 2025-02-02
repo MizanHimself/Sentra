@@ -1,0 +1,7 @@
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/download.jpeg
+    # If you have more images, list them here 
+    - assets/images/pushup_guy.png

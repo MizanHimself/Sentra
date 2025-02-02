@@ -27,170 +27,225 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white, // Change background to white
-        child: Row(
-          children: [
-            Expanded(
-              child: Center(
-                child: Container(
-                  padding:
-                      const EdgeInsets.all(32.0), // Add padding to the container
-                  constraints: const BoxConstraints(
-                      maxWidth: 400), // Set max width for the container
-                  child: Column(
-                    mainAxisAlignment:
-                        MainAxisAlignment.center, // Center the column vertically
-                    crossAxisAlignment: CrossAxisAlignment
-                        .start, // Align the column to the start horizontally
-                    children: <Widget>[
-                      const Text(
-                        'yourlogo', // Display the logo text
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold), // Set text style
-                      ),
-                      const SizedBox(height: 40), // Add vertical spacing
-                      const Text(
-                        'Hello, welcome!', // Display the welcome text
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      const SizedBox(height: 40), // Add vertical spacing
-                      TextField(
-                        controller:
-                            _emailController, // Bind the controller to the email text field
-                        decoration: InputDecoration(
-                          labelText: 'Email address', // Set label text
-                          hintText: 'name@mail.com', // Set hint text
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.circular(10), // Set border radius
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20), // Add vertical spacing
-                      TextField(
-                        controller:
-                            _passwordController, // Bind the controller to the password text field
-                        decoration: InputDecoration(
-                          labelText: 'Password', // Set label text
-                          hintText: '********', // Set hint text
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.circular(10), // Set border radius
-                          ),
-                        ),
-                        obscureText: true, // Hide the password text
-                      ),
-                      const SizedBox(height: 40), // Add vertical spacing
-                      ElevatedButton(
-                        onPressed:
-                            _login, // Bind the login function to the button
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              Colors.blue, // Set button background color
-                          foregroundColor: Colors.white, // Set button text color
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                10), // Set button border radius
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16), // Set button padding
-                        ),
-                        child: const Text(
-                          'Login', // Set button text
-                          style: TextStyle(
-                              fontWeight:
-                                  FontWeight.bold), // Set button text style
-                        ),
-                      ),
-                      const SizedBox(height: 20), // Add vertical spacing
-                      Align(
-                        alignment: Alignment
-                            .centerRight, // Align the text button to the right
-                        child: TextButton(
-                          onPressed:
-                              () {}, // Empty function for forgot password button
-                          child: const Text(
-                            'Forgot password?', // Set text button text
-                            style: TextStyle(
-                                fontSize: 12), // Set text button text style
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20), // Reduce vertical spacing
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment
-                            .center, // Center the row horizontally
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFFFFFFF),
+              Color(0xFFE1E5FF),
+              Color(0xFFD4DAFF),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.0, 0.5, 1.0],
+          ),
+        ),
+        child: SafeArea(
+          child: Row(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(32.0),
+                      constraints: const BoxConstraints(maxWidth: 400),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          IconButton(
-                            icon: const Icon(
-                                Icons.facebook), // Set icon for Facebook
-                            onPressed:
-                                () {}, // Empty function for Facebook button
+                          // Logo Section
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/images/guypushup-intropage.png'),
+                                  width: 24,
+                                  height: 24,
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              const Text(
+                                'FrogoFroyo',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w800,
+                                  color: Color(0xFF2600FA),
+                                  letterSpacing: -0.5,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 10), // Add horizontal spacing
-                          IconButton(
-                            icon: const Icon(
-                                Icons.camera_alt), // Set icon for camera
-                            onPressed: () {}, // Empty function for camera button
+                          const SizedBox(height: 40),
+
+                          // Welcome Text
+                          Container(
+                            padding: const EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(24),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.05),
+                                  blurRadius: 20,
+                                  offset: const Offset(0, 10),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 6),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF2600FA)
+                                        .withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: const Text(
+                                    '✨ Welcome Back',
+                                    style: TextStyle(
+                                      color: Color(0xFF2600FA),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                const Text(
+                                  'Login to\nYour Account',
+                                  style: TextStyle(
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold,
+                                    height: 1.2,
+                                    color: Color(0xFF1A1A1A),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          const SizedBox(width: 10), // Add horizontal spacing
-                          IconButton(
-                            icon: const Icon(
-                                Icons.camera_alt), // Set icon for camera
-                            onPressed: () {}, // Empty function for camera button
+                          const SizedBox(height: 32),
+
+                          // Login Form
+                          TextField(
+                            controller: _emailController,
+                            decoration: InputDecoration(
+                              labelText: 'Email address',
+                              hintText: 'name@mail.com',
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide: BorderSide.none,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide:
+                                    const BorderSide(color: Color(0xFF2600FA)),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          TextField(
+                            controller: _passwordController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              hintText: '********',
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide: BorderSide.none,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide:
+                                    const BorderSide(color: Color(0xFF2600FA)),
+                              ),
+                            ),
+                          ),
+
+                          // Login Button
+                          const SizedBox(height: 32),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: _login,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF2600FA),
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 18),
+                                elevation: 4,
+                                shadowColor:
+                                    const Color(0xFF2600FA).withOpacity(0.5),
+                              ),
+                              child: const Text(
+                                'Login',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.2,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          // Sign Up Link
+                          const SizedBox(height: 24),
+                          Center(
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignUpPage(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                "Don't have an account? Sign Up",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xFF2600FA),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
-                      const Center(child: Text('Follow')), // Display follow text
-                      const SizedBox(height: 20), // Add vertical spacing
-                      Align(
-                        alignment: Alignment.center, // Center the text button
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const SignUpPage()), // Navigate to SignUpPage
-                            );
-                          },
-                          child: const Text(
-                            "Don't have an account yet? Sign Up now", // Set text button text
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.blue), // Set text button text style
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            if (MediaQuery.of(context).size.width >
-                600) // Show image only for larger screens
-              Container(
-                width: MediaQuery.of(context).size.width /
-                    2, // Set container width to half of the screen
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFFFFFFFF),
-                      Color(0xFF2600FA),
-                      Color(0xFF77CBDB)
-                    ], // Set gradient colors
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    stops: [0.1, 0.5, 0.9], // Adjust gradient stops
-                  ),
-                ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

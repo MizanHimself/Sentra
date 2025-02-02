@@ -16,7 +16,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repeatPasswordController = TextEditingController();
+  final TextEditingController _repeatPasswordController =
+      TextEditingController();
   bool _agreeToUserAgreement = false; // Checkbox state for user agreement
   bool _receiveNewsletter = false; // Checkbox state for newsletter
 
@@ -36,123 +37,316 @@ class _SignUpPageState extends State<SignUpPage> {
       onWillPop: () async {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const IntroPage()), // Navigate to IntroPage
+          MaterialPageRoute(
+              builder: (context) => const IntroPage()), // Navigate to IntroPage
         );
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.white, // Set background color to white
-        body: Row(
-          children: [
-            Expanded(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFFFFFFFF),
+                Color(0xFFE1E5FF),
+                Color(0xFFD4DAFF),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.0, 0.5, 1.0],
+            ),
+          ),
+          child: SafeArea(
+            child: SingleChildScrollView(
               child: Center(
                 child: Container(
-                  padding: const EdgeInsets.all(32.0), // Add padding to the container
-                  constraints: const BoxConstraints(maxWidth: 400), // Set max width for the container
+                  padding: const EdgeInsets.all(32.0),
+                  constraints: const BoxConstraints(maxWidth: 400),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center, // Center the column vertically
-                    crossAxisAlignment: CrossAxisAlignment.start, // Align the column to the start horizontally
-                    children: <Widget>[
-                      const Text(
-                        'yourlogo', // Display the logo text
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold), // Set text style
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Logo Section (same as login page)
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: const Image(
+                              image: AssetImage(
+                                  'assets/images/guypushup-intropage.png'),
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          const Text(
+                            'FrogoFroyo',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w800,
+                              color: Color(0xFF2600FA),
+                              letterSpacing: -0.5,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 40), // Add vertical spacing
-                      const Text(
-                        'Create an account', // Display the create account text
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
+                      const SizedBox(height: 40),
+
+                      // Welcome Container
+                      Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.9),
+                          borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.05),
+                              blurRadius: 20,
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF2600FA).withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Text(
+                                '✨ Get Started',
+                                style: TextStyle(
+                                  color: Color(0xFF2600FA),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              'Create Your\nAccount',
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                                height: 1.2,
+                                color: Color(0xFF1A1A1A),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 40), // Add vertical spacing
+
+                      // Form fields with updated styling
                       TextField(
-                        controller: _firstNameController, // Bind the controller to the first name text field
+                        controller:
+                            _firstNameController, // Bind the controller to the first name text field
                         decoration: InputDecoration(
                           labelText: 'First Name', // Set label text
                           hintText: 'John', // Set hint text
+                          filled: true,
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10), // Set border radius
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide:
+                                const BorderSide(color: Color(0xFF2600FA)),
                           ),
                         ),
                       ),
                       const SizedBox(height: 20), // Add vertical spacing
                       TextField(
-                        controller: _emailController, // Bind the controller to the email text field
+                        controller:
+                            _emailController, // Bind the controller to the email text field
                         decoration: InputDecoration(
                           labelText: 'Email address', // Set label text
                           hintText: 'name@mail.com', // Set hint text
+                          filled: true,
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10), // Set border radius
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide:
+                                const BorderSide(color: Color(0xFF2600FA)),
                           ),
                         ),
                       ),
                       const SizedBox(height: 20), // Add vertical spacing
                       TextField(
-                        controller: _passwordController, // Bind the controller to the password text field
+                        controller:
+                            _passwordController, // Bind the controller to the password text field
                         decoration: InputDecoration(
                           labelText: 'Password', // Set label text
                           hintText: '********', // Set hint text
+                          filled: true,
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10), // Set border radius
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide:
+                                const BorderSide(color: Color(0xFF2600FA)),
                           ),
                         ),
                         obscureText: true, // Hide the password text
                       ),
                       const SizedBox(height: 20), // Add vertical spacing
                       TextField(
-                        controller: _repeatPasswordController, // Bind the controller to the repeat password text field
+                        controller:
+                            _repeatPasswordController, // Bind the controller to the repeat password text field
                         decoration: InputDecoration(
                           labelText: 'Repeat Password', // Set label text
                           hintText: '********', // Set hint text
+                          filled: true,
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10), // Set border radius
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide:
+                                const BorderSide(color: Color(0xFF2600FA)),
                           ),
                         ),
                         obscureText: true, // Hide the repeat password text
                       ),
-                      const SizedBox(height: 20), // Add vertical spacing
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: _agreeToUserAgreement, // Bind the checkbox state
-                            onChanged: (value) {
-                              setState(() {
-                                _agreeToUserAgreement = value!; // Update the checkbox state
-                              });
-                            },
-                          ),
-                          const Text('I agree to the User Agreement'), // Display the checkbox label
-                        ],
+                      const SizedBox(height: 20),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: Checkbox(
+                                value: _agreeToUserAgreement,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _agreeToUserAgreement = value!;
+                                  });
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                side:
+                                    const BorderSide(color: Color(0xFF2600FA)),
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            const Expanded(
+                              child: Text(
+                                'I agree to the User Agreement',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Color(0xFF666666),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: _receiveNewsletter, // Bind the checkbox state
-                            onChanged: (value) {
-                              setState(() {
-                                _receiveNewsletter = value!; // Update the checkbox state
-                              });
-                            },
-                          ),
-                          const Text('Receive Newsletter'), // Display the checkbox label
-                        ],
+                      const SizedBox(height: 12),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: Checkbox(
+                                value: _receiveNewsletter,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _receiveNewsletter = value!;
+                                  });
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                side:
+                                    const BorderSide(color: Color(0xFF2600FA)),
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            const Expanded(
+                              child: Text(
+                                'Receive Newsletter',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Color(0xFF666666),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 40), // Add vertical spacing
-                      ElevatedButton(
-                        onPressed: _signUp, // Bind the sign up function to the button
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue, // Set button background color
-                          foregroundColor: Colors.white, // Set button text color
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10), // Set button border radius
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed:
+                              _signUp, // Bind the sign up function to the button
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF2600FA),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 18),
+                            elevation: 4,
+                            shadowColor:
+                                const Color(0xFF2600FA).withOpacity(0.5),
                           ),
-                          padding: const EdgeInsets.symmetric(vertical: 16), // Set button padding
-                        ),
-                        child: const Text(
-                          'Sign Up', // Set button text
-                          style: TextStyle(fontWeight: FontWeight.bold), // Set button text style
+                          child: const Text(
+                            'Sign Up', // Set button text
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.2,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20), // Add vertical spacing
@@ -163,12 +357,17 @@ class _SignUpPageState extends State<SignUpPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LoginPage()), // Navigate to LoginPage
+                                  builder: (context) =>
+                                      const LoginPage()), // Navigate to LoginPage
                             );
                           },
                           child: const Text(
                             "Already have an account? Sign in now", // Set text button text
-                            style: TextStyle(fontSize: 14, color: Colors.blue), // Set text button text style
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF2600FA),
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
@@ -177,18 +376,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            if (MediaQuery.of(context).size.width > 600) // Show image only for larger screens
-              Container(
-                width: MediaQuery.of(context).size.width / 2, // Set container width to half of the screen
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.blue, Colors.white], // Set gradient colors
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                ),
-              ),
-          ],
+          ),
         ),
       ),
     );
