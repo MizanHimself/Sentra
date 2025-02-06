@@ -2,6 +2,7 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/images/download.jpeg
+    - assets/images/
     # If you have more images, list them here 
     - assets/images/pushup_guy.png
+    - assets/images/download.jpeg
